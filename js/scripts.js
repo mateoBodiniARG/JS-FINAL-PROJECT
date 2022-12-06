@@ -2,6 +2,8 @@ const Clickbutton = document.querySelectorAll('.button')
 const tbody = document.querySelector('.tbody')
 let carrito = []
 
+// Evento click al anadir al carrito
+
 Clickbutton.forEach(btn => {
   btn.addEventListener('click', AddCarrito)
 })
@@ -24,7 +26,7 @@ function AddCarrito(e){
   addItemCarrito(newItem)
 }
 
-
+// Anadir al carrito nuevo producto
 function addItemCarrito(newItem){
 
   const alert = document.querySelector('.alert')
@@ -44,12 +46,15 @@ function addItemCarrito(newItem){
       return null;
     }
   }
-  
+
+// Pushear ese item agregado
   carrito.push(newItem)
   
   renderCarrito()
 } 
 
+
+// Reender del carrito mostrando los datos como la cantidad precio, etc
 
 function renderCarrito(){
   tbody.innerHTML = ''
@@ -79,6 +84,7 @@ function renderCarrito(){
   CarritoTotal()
 }
 
+//  Total gastado luego de agreegar los productos al carrito
 function CarritoTotal(){
   let Total = 0;
   const itemCartTotal = document.querySelector('.itemCartTotal')
@@ -90,6 +96,8 @@ function CarritoTotal(){
   itemCartTotal.innerHTML = `Total $${Total}`
   addLocalStorage()
 }
+
+// En caso de remover el producto del carrito
 
 function removeItemCarrito(e){
   const buttonDelete = e.target
@@ -112,6 +120,7 @@ function removeItemCarrito(e){
   tr.remove()
   CarritoTotal()
 }
+
 
 function sumaCantidad(e){
   const sumaInput  = e.target
